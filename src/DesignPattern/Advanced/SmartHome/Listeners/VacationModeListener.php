@@ -1,27 +1,25 @@
 <?php
 
 
-namespace DesignPattern\Advanced\SmartHome\Listeners;
+namespace App\DesignPattern\Advanced\SmartHome\Listeners;
 
-use DesignPattern\Advanced\SmartHome\Commands\Command;
-use DesignPattern\Advanced\SmartHome\Devices\SmartDevice;
-use DesignPattern\Advanced\SmartHome\Events\Event;
-use DesignPattern\Advanced\SmartHome\Events\EventManager;
-use DesignPattern\Advanced\SmartHome\States\ObjectState;
+use App\DesignPattern\Advanced\SmartHome\Commands\Command;
+use App\DesignPattern\Advanced\SmartHome\Devices\SmartDevice;
+use App\DesignPattern\Advanced\SmartHome\Events\Event;
+use App\DesignPattern\Advanced\SmartHome\Events\EventManager;
+use App\DesignPattern\Advanced\SmartHome\States\ObjectState;
 
 class VacationModeListener implements EventListener, Command
 {
 
     public function __construct(
         private readonly SmartDevice $device,
-        private readonly EventManager $eventManager = new EventManager()
+        private readonly EventManager $eventManager
     ){}
 
     public function handle(Event $event): void
     {
-        $this->eventManager->pushState(
-            new ObjectState(clone $this->device)
-        );
+        $this->eventManager->pushState(new ObjectState(clone $this->device));
 
         $this->execute();
     }

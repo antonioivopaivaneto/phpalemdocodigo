@@ -1,6 +1,6 @@
 <?php
 
-namespace DesignPattern\Advanced\SmartHome\Commands;
+namespace App\DesignPattern\Advanced\SmartHome\Commands;
 
 interface Command
 {

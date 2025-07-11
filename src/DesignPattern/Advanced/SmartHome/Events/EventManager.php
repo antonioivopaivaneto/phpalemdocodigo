@@ -1,10 +1,10 @@
 <?php
 
 
-namespace DesignPattern\Advanced\SmartHome\Events;
+namespace App\DesignPattern\Advanced\SmartHome\Events;
 
-use DesignPattern\Advanced\SmartHome\Listeners\EventListener;
-use DesignPattern\Advanced\SmartHome\States\ObjectState;
+use App\DesignPattern\Advanced\SmartHome\Listeners\EventListener;
+use App\DesignPattern\Advanced\SmartHome\States\ObjectState;
 use SplStack;
 
 final class EventManager

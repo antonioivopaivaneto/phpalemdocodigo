@@ -1,10 +1,10 @@
 <?php
 
-use DesignPattern\Advanced\SmartHome\Devices\LightDevice;
-use DesignPattern\Advanced\SmartHome\Devices\ThermostatDevice;
-use DesignPattern\Advanced\SmartHome\Events\Event;
-use DesignPattern\Advanced\SmartHome\Events\EventManager;
-use DesignPattern\Advanced\SmartHome\Listeners\VacationModeListener;
+use App\DesignPattern\Advanced\SmartHome\Devices\LightDevice;
+use App\DesignPattern\Advanced\SmartHome\Devices\ThermostatDevice;
+use App\DesignPattern\Advanced\SmartHome\Events\Event;
+use App\DesignPattern\Advanced\SmartHome\Events\EventManager;
+use App\DesignPattern\Advanced\SmartHome\Listeners\VacationModeListener;
 use PHPUnit\Framework\TestCase;
 
 final class SmartHomeTest extends TestCase
@@ -38,8 +38,8 @@ final class SmartHomeTest extends TestCase
         $lightDevice = new LightDevice();
         $thermostatDevice = new ThermostatDevice();
 
-        $lightListener = new VacationModeListener($lightDevice);
-        $thermostatListener = new VacationModeListener($thermostatDevice);
+        $lightListener = new VacationModeListener($lightDevice, $eventManager);
+        $thermostatListener = new VacationModeListener($thermostatDevice, $eventManager);
 
         $eventManager->addListener('vacationMode', $lightListener);
         $eventManager->addListener('vacationMode', $thermostatListener);
@@ -60,14 +60,14 @@ final class SmartHomeTest extends TestCase
        $eventManager = EventManager::getInstance();
        $lightDevice = new LightDevice();
 
-       $lightDevice = new VacationModeListener($lightDevice);
-       $eventManager->addListener('vacationMode',$lightListener);
+       $lightListener = new VacationModeListener($lightDevice, $eventManager);
+       $eventManager->addListener('vacationMode',$lightListener, );
 
        $eventManager->trigger(new Event('vacationMode'));
        $this->assertEquals(1, $lightDevice->getStatus());
 
-       $lightDevice->undo();
-       $lightDevice->undo(); // Calling undo again should not change the status
+       $lightListener->undo();
+       $lightListener->undo(); // Calling undo again should not change the status
        $this->assertEquals(0, $lightDevice->getStatus());
     }
 }

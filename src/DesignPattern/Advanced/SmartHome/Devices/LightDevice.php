@@ -1,6 +1,6 @@
 <?php
 
-namespace DesignPattern\Advanced\SmartHome\Devices;
+namespace App\DesignPattern\Advanced\SmartHome\Devices;
 
 
 class LightDevice extends SmartDevice

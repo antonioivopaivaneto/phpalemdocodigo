@@ -1,8 +1,8 @@
 <?php
 
-namespace DesignPattern\Advanced\SmartHome\Listeners;
+namespace App\DesignPattern\Advanced\SmartHome\Listeners;
 
-use DesignPattern\Advanced\SmartHome\Events\Event;
+use App\DesignPattern\Advanced\SmartHome\Events\Event;
 
 interface EventListener
 {

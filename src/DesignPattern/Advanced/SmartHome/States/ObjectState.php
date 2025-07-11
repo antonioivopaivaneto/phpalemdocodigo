@@ -1,16 +1,18 @@
 <?php
 
 
-namespace DesignPattern\Advanced\SmartHome\States;
+namespace App\DesignPattern\Advanced\SmartHome\States;
 
 class ObjectState
 {
-    public function __construct(private string $state)
+    private object $state;
+    public function __construct(object $state)
     {
+        $this->state = $state;
         
     }
 
-    public function getState(): string
+    public function getState(): object
     {
         return $this->state;
     }

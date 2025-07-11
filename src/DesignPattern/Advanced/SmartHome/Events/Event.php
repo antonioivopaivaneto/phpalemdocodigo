@@ -1,7 +1,7 @@
 <?php
 
 
-namespace DesignPattern\Advanced\SmartHome\Events;
+namespace App\DesignPattern\Advanced\SmartHome\Events;
 
 class Event
 {
